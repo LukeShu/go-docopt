@@ -38,7 +38,7 @@ before positional arguments; otherwise they can overlap.
 
 By default, docopt calls `os.Exit(0)` if it handled a built-in option such as
 `-h` or `--version`. If the user errored with a wrong command or options,
-docopt exits with a return code of 1. To stop docopt from calling `os.Exit()`
+docopt exits with a return code of 2. To stop docopt from calling `os.Exit()`
 and to handle your own return codes, pass an optional last parameter of `false`
 for `exit`.
 */
@@ -54,7 +54,7 @@ func Parse(doc string, argv []string, help bool, version string,
 		// the user gave us bad input
 		fmt.Fprintln(os.Stderr, output)
 		if exitOk {
-			os.Exit(1)
+			os.Exit(2)
 		}
 	} else if len(output) > 0 && err == nil {
 		// the user asked for help or `--version`
